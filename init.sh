@@ -1,6 +1,7 @@
 #!/bin/sh
 if [ ! -f /aria2/conf/aria2.conf ]; then
 	cp /aria2/conf-temp/aria2.conf /aria2/conf/aria2.conf
+	curl https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best_ip.txt -s|tr -s '\n'|tr '\n' ',' >> /aria2/conf/aria2.conf
 	if [ $SECRET ]; then
 		echo "rpc-secret=${SECRET}" >> /aria2/conf/aria2.conf
 	fi
